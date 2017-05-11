@@ -1,9 +1,9 @@
 name 'docker_book'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Patrick Dayton'
+maintainer_email 'daytonpa@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures docker_book'
-long_description 'Installs/Configures docker_book'
+long_description 'This cookbook will install and configure your desired version of Docker'
 version '0.1.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
@@ -17,4 +17,9 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 # `View Source` link will be displayed on this cookbook's page when uploaded to
 # a Supermarket.
 #
-# source_url 'https://github.com/<insert_org_here>/docker_book'
+# source_url 'https://github.com/daytonpa/docker_book'
+
+# cookbook dependencies
+%w( apt docker yum ).each do |d|
+  depends d
+end
