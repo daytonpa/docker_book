@@ -17,6 +17,12 @@ describe 'docker_book::default' do
   }.each do |os, version|
     version.each do |v|
       context "When all attributes are default on #{os.upcase}-#{v}" do
+        let(:required_packages_ubuntu) {[
+          'apt-transport-https',
+          'ca-certificates',
+          'curl',
+          'software-properties-common'
+        ]}
         let(:chef_run) do
           ChefSpec::ServerRunner.new(platform: os, version: v) do |node|
             # Default attributes
@@ -31,6 +37,11 @@ describe 'docker_book::default' do
         when 'ubuntu'
           it 'updates the apt caches' do
             expect(chef_run).to include_recipe('apt')
+          end
+          it 'installs the neccessary required packages for Docker' do
+            required_packages_ubuntu.each do |pkg|
+              expect(chef_run).to install_apt_package(pkg)
+            end
           end
         when 'centos'
           it 'updates the yum caches' do
