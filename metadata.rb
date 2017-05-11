@@ -4,7 +4,7 @@ maintainer_email 'daytonpa@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures docker_book'
 long_description 'This cookbook will install and configure your desired version of Docker'
-version '0.1.0'
+version '1.0.1'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
 # The `issues_url` points to the location where issues for this cookbook are
