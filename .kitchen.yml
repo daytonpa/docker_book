@@ -18,7 +18,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[docker_book::default]
+      - recipe[docker_book::install_docker]
     verifier:
       inspec_tests:
         - test/smoke/default
